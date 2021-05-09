@@ -1,7 +1,5 @@
 package cz.czechitas.java2webapps.lekce6.controller.cokolada;
 
-import cz.czechitas.java2webapps.lekce6.controller.alkohol.Objem;
-
 import javax.validation.constraints.*;
 
 public class CokoladaForm {
@@ -9,7 +7,7 @@ public class CokoladaForm {
     @NotEmpty
     private String druh;
     @NotNull   // nesmí být prázdné
-    private Objem velikost;
+    private Velikost velikost;
     @NotBlank
     private String jmeno;
     @Email
@@ -26,12 +24,12 @@ public class CokoladaForm {
         this.druh = zbozi;
     }
 
-    public Objem getVelikost() {
+    public Velikost getVelikost() {
         return velikost;
     }
 
-    public void setVelikost(Objem objem) {
-        this.velikost = objem;
+    public void setVelikost(Velikost velikost) {
+        this.velikost = velikost;
     }
 
     public String getJmeno() {

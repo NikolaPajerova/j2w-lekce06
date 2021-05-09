@@ -11,43 +11,43 @@
         <h1>Objednávka čokolády</h1>
 
         <label for="druh" class="radek">Druh čokolády:</label>
-        <select id="druh" name="druh" th:field="${CokoForm.druh}">
+        <select id="druh" name="druh" th:field="${cokoForm.druh}">
             <option value="1">mléčná</option>
             <option value="2">bílá</option>
             <option value="3">hořká</option>
             <option value="3">s příchutí</option>
         </select>
-        <div class="error" th:if="${#fields.hasErrors('form.druh')}" th:errors="${CokoForm.druh}"></div>
+        <div class="error" th:if="${#fields.hasErrors('cokoForm.druh')}" th:errors="${cokoForm.druh}"></div>
 
         <div class="radek">Výběr velikosti:</div>
         <div class="skupina">
             <div>
-                <input id="velikost1" type="radio" th:field="${CokoForm.velikost}" value="MALA_100g"/>
+                <input id="velikost1" type="radio" th:field="${cokoForm.velikost}" value="MALA_100g"/>
                 <label for="velikost1">malá</label>
             </div>
             <div>
-                <input id="velikost2" type="radio" th:field="${CokoForm.velikost}" value="STREDNI_250g"/>
+                <input id="velikost2" type="radio" th:field="${cokoForm.velikost}" value="STREDNI_250g"/>
                 <label for="velikost2">střední</label>
             </div>
             <div>
-                <input id="velikost3" type="radio" th:field="${CokoForm.velikost}" value="VELKA_600g"/>
+                <input id="velikost3" type="radio" th:field="${cokoForm.velikost}" value="VELKA_600g"/>
                 <label for="velikost3">velká</label>
             </div>
         </div>
-        <div class="error" th:if="${#fields.hasErrors('form.objem')}" th:errors="${CokoForm.velikost}"></div>
+        <div class="error" th:if="${#fields.hasErrors('cokoForm.velikost')}" th:errors="${cokoForm.velikost}"></div>
 
         <label for="jmeno" class="radek">Jméno a příjmení:</label>
-        <input id="jmeno" type="text" th:field="${CokoForm.jmeno}"/>
-        <div class="error" th:if="${#fields.hasErrors('form.jmeno')}" th:errors="${CokoForm.jmeno}"></div>
+        <input id="jmeno" type="text" th:field="${cokoForm.jmeno}"/>
+        <div class="error" th:if="${#fields.hasErrors('cokoForm.jmeno')}" th:errors="${cokoForm.jmeno}"></div>
 
         <label for="email" class="radek">E-mail:</label>
-        <input id="email" type="email" th:field="${CokoForm.email}"/>
+        <input id="email" type="email" th:field="${cokoForm.email}"/>
 
         <div class="radek">
-            <input id="obchodni-podminky" type="checkbox" name="obchodniPodminky" th:checked="${CokoForm.obchodniPodminky}"/>
+            <input id="obchodni-podminky" type="checkbox" name="obchodniPodminky" th:checked="${cokoForm.obchodniPodminky}"/>
             <label for="obchodni-podminky">Souhlasím s obchodními podmínkami</label>
         </div>
-        <div class="error" th:if="${#fields.hasErrors('form.obchodniPodminky')}" th:errors="${CokoForm.obchodniPodminky}"></div>
+        <div class="error" th:if="${#fields.hasErrors('cokoForm.obchodniPodminky')}" th:errors="${cokoForm.obchodniPodminky}"></div>
 
         <div class="radek controls">
             <button type="submit">Objednat</button>

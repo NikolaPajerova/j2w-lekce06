@@ -15,26 +15,26 @@ import java.util.Random;
  *
  */
 @Controller
-@RequestMapping("/cokolada")
+@RequestMapping("cokolada")
 public class CokoladaController {
   private final Random random = new Random();
 
 
   @GetMapping("")
   public ModelAndView index() {
-    ModelAndView modelAndView = new ModelAndView("/cokolada/formular");
-    modelAndView.addObject("CokoForm", new CokoladaForm());
+    ModelAndView modelAndView = new ModelAndView("cokolada/formular");
+    modelAndView.addObject("cokoForm", new CokoladaForm());
     return modelAndView;
   }
 
   @PostMapping("")
-  public Object CokoForm(@ModelAttribute("CokoForm") @Valid CokoladaForm CokoForm, BindingResult bindingResult) {
+  public Object cokoForm(@ModelAttribute("cokoForm") @Valid CokoladaForm cokoForm, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
-      return "/cokolada/formular";  //pokud bude tato chyba, pošle do formuláře a další řádky neprobehnou
+      return "cokolada/formular";
     }
     return new ModelAndView("/alkohol/objednano")
             .addObject("kod", Math.abs(random.nextInt()))
-            .addObject("email", CokoForm.getEmail());
+            .addObject("email", cokoForm.getEmail());
     }
   }
 
