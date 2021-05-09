@@ -13,7 +13,7 @@
         <select id="zbozi" name="zbozi" th:field="${form.zbozi}">
             <option value=""></option>
             <option value="1">Veltlín – Sauvignon kabinet</option>
-            <option value="2">Rulanské šedé suché</option>
+            <option value="2">Rulandské šedé suché</option>
             <option value="3">Modrý Portugal</option>
             <option value="4">Frisco Mojito</option>
             <option value="5">Žufánek Višňovka</option>
@@ -40,7 +40,8 @@
 
         <label for="jmeno" class="radek">Jméno a příjmení:</label>
         <input id="jmeno" type="text" th:field="${form.jmeno}"/>
-        <div class="error" th:if="${#fields.hasErrors('form.jmeno')}" th:errors="${form.jmeno}"></div>
+        <div class="error" th:if="${#fields.hasErrors('form.jmeno')}" th:errors="${form.jmeno}"></div> <!--hláška, která se tučně červeně zobrazí-->
+                            <!-- pomocí #fields se lze dotazovat na ${form.jmeno} -->
 
         <label for="vek" class="radek">Věk:</label>
         <input id="vek" type="number" th:field="${form.vek}"/>
@@ -57,10 +58,10 @@
         <div class="error" th:if="${#fields.hasErrors('form.obchodniPodminky')}" th:errors="${form.obchodniPodminky}"></div>
 
         <div class="radek">
-            <input id="newsletter" type="checkbox" name="newsletter" th:checked="${form.newsletter}"/>
+            <input id="newsletter" type="checkbox" th:field="${form.newsletter}"/>
             <label for="newsletter">Souhlasím se zasíláním newsletterů</label>
         </div>
-        <div class="error" th:if="${#fields.hasErrors('form.newsletter')}" th:errors="${form.newsletter}"></div>
+        <div class="error" th:if="${#fields.hasErrors('form.newsletter')}" th:field="${form.newsletter}"></div>
 
         <div class="radek controls">
             <button type="submit">Objednat</button>

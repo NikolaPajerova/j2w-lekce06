@@ -9,14 +9,49 @@
 <div class="container">
     <form class="kosik" th:action="@{/cokolada}" method="post">
         <h1>Objednávka čokolády</h1>
-        <!--
-        Formulář bude obsahovat:
-        * výběr z druhů čokolády, např.: mléčná, bíla, hořká (select)
-        * výběr velikosti: malá, střední, velká (radio button)
-        * Jméno a příjmení (input)
-        * e-mail – volitelný údaj (input)
-        * souhlas s obchodními podmínkami (check box)
-        -->
+
+        <label for="druh" class="radek">Druh čokolády:</label>
+        <select id="druh" name="druh" th:field="${CokoForm.druh}">
+            <option value="1">mléčná</option>
+            <option value="2">bílá</option>
+            <option value="3">hořká</option>
+            <option value="3">s příchutí</option>
+        </select>
+        <div class="error" th:if="${#fields.hasErrors('form.druh')}" th:errors="${CokoForm.druh}"></div>
+
+        <div class="radek">Výběr velikosti:</div>
+        <div class="skupina">
+            <div>
+                <input id="velikost1" type="radio" th:field="${CokoForm.velikost}" value="MALA_100g"/>
+                <label for="velikost1">malá</label>
+            </div>
+            <div>
+                <input id="velikost2" type="radio" th:field="${CokoForm.velikost}" value="STREDNI_250g"/>
+                <label for="velikost2">střední</label>
+            </div>
+            <div>
+                <input id="velikost3" type="radio" th:field="${CokoForm.velikost}" value="VELKA_600g"/>
+                <label for="velikost3">velká</label>
+            </div>
+        </div>
+        <div class="error" th:if="${#fields.hasErrors('form.objem')}" th:errors="${CokoForm.velikost}"></div>
+
+        <label for="jmeno" class="radek">Jméno a příjmení:</label>
+        <input id="jmeno" type="text" th:field="${CokoForm.jmeno}"/>
+        <div class="error" th:if="${#fields.hasErrors('form.jmeno')}" th:errors="${CokoForm.jmeno}"></div>
+
+        <label for="email" class="radek">E-mail:</label>
+        <input id="email" type="email" th:field="${CokoForm.email}"/>
+
+        <div class="radek">
+            <input id="obchodni-podminky" type="checkbox" name="obchodniPodminky" th:checked="${CokoForm.obchodniPodminky}"/>
+            <label for="obchodni-podminky">Souhlasím s obchodními podmínkami</label>
+        </div>
+        <div class="error" th:if="${#fields.hasErrors('form.obchodniPodminky')}" th:errors="${CokoForm.obchodniPodminky}"></div>
+
+        <div class="radek controls">
+            <button type="submit">Objednat</button>
+        </div>
     </form>
 </div>
 </body>

@@ -1,29 +1,25 @@
 package cz.czechitas.java2webapps.lekce6.controller.alkohol;
 
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 /**
  */
 public class AlkoholForm {
-  @NotBlank
+  @NotBlank   //pravidla pro vyplňování - nesmí být prázdné atp., lze zadat též na GETTERu
+  @NotEmpty  // zkontroluje, že hodnota není Null a není prázdný string, musí být text (bere i jednu mezeru)
   private String zbozi;
+  @NotNull   // nesmí být prázdné
+  private Objem objem;  //můžu rovnou vyplnit nějakou hodnotu, která se zobrazí - objem = Objem.OBJEM_5L
+  @NotBlank  //zkontroluje, že není Null, délka je větší než 1 a není to mezera
+  private String jmeno; //můžu rovnou vyplnit nějakou hodnotu, která se zobrazí - jmeno = "Méďa Béďa"
   @NotNull
-  private Objem objem;
-  @NotBlank
-  private String jmeno;
-  @NotNull
-  @Min(1)
+  @Min(1)  //řeší obsah prvku VEK
   @Max(150)
   private Integer vek;
-  @Email
+  @Email  //řeší, zda se zadá formát adresy
   @NotBlank
   private String email;
-  @AssertTrue
+  @AssertTrue  //zadaná hodnota musí být vždy TRUE
   private boolean obchodniPodminky;
   private boolean newsletter;
 

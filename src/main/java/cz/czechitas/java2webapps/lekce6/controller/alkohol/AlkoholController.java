@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Random;
-import java.util.UUID;
 
 /**
  */
@@ -20,22 +19,22 @@ public class AlkoholController {
   private final Random random = new Random();
 
   @GetMapping("")
-  public ModelAndView index() {
+  public ModelAndView index() {  //jen zobrazuje formulář
     ModelAndView modelAndView = new ModelAndView("/alkohol/formular");
     modelAndView.addObject("form", new AlkoholForm());
     return modelAndView;
   }
 
   @PostMapping("")
-  public Object form(@ModelAttribute("form") AlkoholForm form, BindingResult bindingResult) {
+  public Object form(@ModelAttribute("form") @Valid AlkoholForm form, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
-      return "/alkohol/formular";
+      return "/alkohol/formular";  //pokud bude tato chyba, pošle do formuláře a další řádky neprobehnou
     }
 
     if (form.getVek() < 18) {
       return "/alkohol/nizky-vek";
 /*
-      bindingResult.rejectValue("vek", "", "To by nešlo. Nejsi náhodou starší?");
+      bindingResult.rejectValue("vek", "", "To by nešlo. Nejsi náhodou starší?");  //vložení vlastní hlášky erroru
       return "/alkohol/formular";
 */
     }
